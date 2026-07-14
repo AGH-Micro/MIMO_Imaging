@@ -1,8 +1,8 @@
 
 clc; clear all; close all;
 
-% step 1 : load parameters
-S=parameters();
+
+parameters;
 
 % step 2 : load data , create matrix
 
