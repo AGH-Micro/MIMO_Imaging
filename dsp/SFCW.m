@@ -2,17 +2,17 @@ function x =SFCW( freq_samp,freq_start,freq_step,step_num,chirp_time,chirp_num)
 
 %% default input values
 if nargin<6
-   chirp_num=5;
+   chirp_num=1;
    if nargin<5
-        chirp_time=0.1;
+        chirp_time=0.0001;
         if nargin<4
-            step_num=5;
+            step_num=10000;
             if nargin<3
-                freq_step=1000;
+                freq_step=10000;
                 if nargin<2
-                    freq_start=4000;
+                    freq_start=10000000000;   
                     if nargin <1 
-                        freq_samp=400000;
+                        freq_samp=100000000000;
                     end
                 end
             end
@@ -33,6 +33,8 @@ freq=freq(1 : min(length(t),length(freq) ));
 t=t(1:length(freq));
 
 %% signal time domain
-x=sin(2*pi*freq.*t)';
+x=sin(2*pi*(freq').*t)';
+
+%x=bandpass(x,[freq_start*0.9, 1.1*( freq_start+step_num*freq_step)],freq_samp);
 
 end
