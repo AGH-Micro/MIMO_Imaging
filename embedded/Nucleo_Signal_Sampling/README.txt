@@ -31,3 +31,9 @@ Kod jest podzielony na bloki zaznaczone komentarzami np.
 Są one wygenerowane przez konfigurator więc to ważne żeby kod dopisywać właśnie w tych segmentach, w przeciwnym wypadku podczas zmiany konfiuguracji dopisany kod może zostać usunięty.
 
 
+RF Switch
+
+Kod wymaga uzupełnienia o numery pinów GPIO kiedy już zostaną wybrane, driver zawiera funkcje Init oraz funkcje do wybierania ścieżki. 
+
+
+
