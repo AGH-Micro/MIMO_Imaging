@@ -1,15 +1,10 @@
+clc; clear all; close all;
+
 %% constant parameters
-chirp_num=1;
-chirp_time=0.0001;
-step_num=10000;
-freq_step=60000;
-freq_start=10000000000;   
-freq_samp=100000000000;
-
-c=299792458 ;
+parameters;
 fs=100000000000;
-
 N=1000; %% downsampling value
+fs2=fs/N;
 
 % position of object
 O=3; % number of objects
@@ -22,7 +17,7 @@ T_x= [0,0.05, 0.1, 0.15 ];
 R_y= [0.05, 0.1, 0.15, 0.2 ];
 
 %% start of computing
-signal=SFCW(0,freq_samp,freq_start,freq_step,step_num,chirp_time,chirp_num);
+signal=SFCW(0);
 f=fs/length(signal)*(0:length(signal)-1);
 
 data=zeros(4,4,length(signal)/N);
@@ -42,13 +37,13 @@ for m=1:O
     for i=1:4
     for j=1:4    
 
-        sig_rec_0=SFCW(t_delay(i,j),freq_samp,freq_start,freq_step,step_num,chirp_time,chirp_num);
+        sig_rec_0=SFCW(t_delay(i,j));
         sig_rec_1 = (dis_delay(i,j)^(-4)).*sig_rec_0;
         sig_rec_2=sig_rec_1.*signal;
 
         % downsampling  
         if(N>1)
-        %fs2=fs/N;
+        
             y = lowpass(sig_rec_2,fs/N,fs);
             sig_rec_3=y(1:N:end);
             f2=fs2/length(sig_rec_3)*(0:length(sig_rec_3)-1);
