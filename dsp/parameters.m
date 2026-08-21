@@ -1,32 +1,26 @@
-%% data cells (2 cells of 2x2 matrices )
-Tx_data=cell(2);
-Rx_data=cell(2);
 
 
-% radar parameters
-radar.fs=50*1e6;   % sampling frequency
-radar.fmin=[]    ;   % starting frequency
-radar.fstep=[]   ;   % SFCW step size
-radar.step_num=[] ;  % SFCW number of steps
-radar.T_step=[] ;   %duration of step
-radar.T=[];  %duration of whole signal
-radar.B=[];  % bandwidth
-radar.D_x=0.05; % antennas separation x axis [m]
-radar.D_y=0.05;  % antennas separation y axis [m]
-radar.beam_w=[];  % Antenna beamwidth [rad]
 
-
-%generating SFCW signal (need phased array toolbox)
-sfcw_wave=phased.SteppedFMWaveform;
-sfcw_wave.SampleRate=radar.fs;
-sfcw_wave.FrequencyStep=4e3;
-sfcw_wave.FrequencyOffset=96e6; % center frequency is 100MHz with 8MHz bandwidth
-sfcw_wave.NumPulses=100;
-
-
+% signal parameters
+fs=100000000;   % sampling frequency
+fmin=10000000000;   % starting frequency
+fstep=60000;   % SFCW step size
+step_num=10000;  % SFCW number of steps
+chirp_num=1; %number of chirps
+T_chirp=0.0001;   %duration of chirp
+T_step=T_chirp/step_num; % duration of step
+T=T_chirp*chirp_num;  %duration of whole signal
+B=fstep*step_num;  % bandwidth
 c=299792458 ; % speed of light
+%N=1000; %% downsampling value
 
+%Mt=[]; % matrix length in time domain 
 
-
+% radar physical parameters
+Mx=4;  % number of antenas in x axis (?transmiters?)
+My=4;  % number of antenas in y axis  (?receivers?)
+D_x=0.05; % antennas separation x axis [m]
+D_y=0.05;  % antennas separation y axis [m]
+beam_w=[];  % Antenna beamwidth [rad]
 
 
