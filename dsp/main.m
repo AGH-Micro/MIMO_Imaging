@@ -8,10 +8,11 @@ parameters;
 load("data_nr1.mat");
 
 % step 3 : fourier x-azis , y-axis 
-
+data=fftshift(fft(data,[],1),1); 
+data=fftshift(fft(data,[],2),2);
 
 % step 4: create phase factor matrix (?matched filter?) and multiply data by it
-%phase_factor;
+phase_factor;
 
 % step 5: Slotz interpolation 
 
