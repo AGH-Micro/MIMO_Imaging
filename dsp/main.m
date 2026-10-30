@@ -14,8 +14,13 @@ data=fftshift(fft(data,[],2),2);
 % step 4: create phase factor matrix (?matched filter?) and multiply data by it
 phase_factor;
 
-% step 5: Slotz interpolation 
 
+% step 5: Slotz interpolation (assuming - Stolt)
+s_B = data;
+
+% stolt_migartion - for legacy there is a snippet inside for taking only
+% strong reflections into account
+stolt;
 
 % step 6: 3D inverse fourier 
 

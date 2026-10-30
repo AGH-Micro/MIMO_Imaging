@@ -2,8 +2,10 @@
 
 
 % signal parameters
-fs=100000000;   % sampling frequency
+fs=100000000;% sampling frequency
+fs=1e+8; %100MHz
 fmin=10000000000;   % starting frequency
+fmin=1e+10;%10GHz
 fstep=60000;   % SFCW step size
 step_num=10000;  % SFCW number of steps
 chirp_num=1; %number of chirps
