@@ -24,6 +24,7 @@ stolt;
 
 % step 6: 3D inverse fourier 
 
+img_before_vis = ifft(s_B2);
 
 % step 7: visualising data
 
